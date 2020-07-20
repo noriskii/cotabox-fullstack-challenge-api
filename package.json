@@ -1,0 +1,9 @@
+{
+  "name": "cotabox-fullstack-challenge-api",
+  "version": "1.0.0",
+  "description": "API to work with the cotabox-fullstack-challenge-frontend",
+  "main": "index.js",
+  "repository": "https://github.com/noriskii/cotabox-fullstack-challenge-api",
+  "author": "Lucas Augusto <luckaugusto@gmail.com>",
+  "license": "MIT"
+}
