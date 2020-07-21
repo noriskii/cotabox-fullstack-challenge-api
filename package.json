@@ -5,5 +5,18 @@
   "main": "index.js",
   "repository": "https://github.com/noriskii/cotabox-fullstack-challenge-api",
   "author": "Lucas Augusto <luckaugusto@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.25"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
 }
