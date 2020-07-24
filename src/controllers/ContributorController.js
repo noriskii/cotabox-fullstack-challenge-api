@@ -1,5 +1,3 @@
-
-const axios = require('axios');
 const Contributor = require('../models/contributor');
 
 module.exports = {
@@ -7,7 +5,8 @@ module.exports = {
   async index(req, res) {
     await Contributor.find((err, contributors) => {
       if(err) { 
-        return handleError(res, err); 
+        console.log(err);
+        return res.status(500).json(err);
       }
 
       return res.status(200).json(contributors);
@@ -17,7 +16,8 @@ module.exports = {
   async reset(req, res) {
     await Contributor.deleteMany({}, (err, contributor) => {
       if(err) { 
-        return handleError(res, err); 
+        console.log(err);
+        return res.status(500).json(err);
       }
 
       return res.status(200).json(contributor);
@@ -30,7 +30,7 @@ module.exports = {
     const userExists = await Contributor.findOne({ firstName, lastName });
 
     if(userExists) {
-      return res.json(userExists);
+      return res.json({'error':'Contributor already Exists!'});
     }
     
     await Contributor.create({
@@ -39,7 +39,8 @@ module.exports = {
       contribution
     }, (err, contributor) => {
       if(err) { 
-        return handleError(res, err); 
+        console.log(err);
+        return res.status(500).json(err);
       }
 
       return res.status(200).json(contributor);
@@ -50,15 +51,21 @@ module.exports = {
   async remove(req, res) {
     const { firstName, lastName } = req.body;
 
+    const userExists = await Contributor.findOne({ firstName, lastName });
+
+    if(!userExists) {
+      return res.json({'error':'Contributor doesn\'t Exists!'});
+    }
+
     await Contributor.deleteOne({
       firstName,
       lastName
     }, (err, contributor) => {
       if(err) { 
-        return handleError(res, err); 
+        console.log(err);
+        return res.status(500).json(err);
       }
-
-      return res.status(200).json(contributor);
+        return res.status(200).json(contributor);
     });    
   },
 
