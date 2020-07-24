@@ -1,0 +1,32 @@
+### RESET DATABASE DATA
+
+GET http://localhost:3333/reset
+
+### GET ALL CONTRIBUTORS
+
+GET http://localhost:3333/contributors
+
+### GET TOTAL PARTICIPATION OF ALL CONTRIBUTORS
+
+GET http://localhost:3333/totalContribution
+
+### ADD A NEW CONTRIBUTOR
+
+POST http://localhost:3333/addContributor
+content-type: application/json
+
+{
+	"firstName":"First Name",
+	"lastName":"Last Name",
+	"contribution":10
+}
+
+### REMOVE AN CONTRIBUTOR
+
+DELETE http://localhost:3333/removeContributor
+content-type: application/json
+
+{
+	"firstName":"First Name",
+	"lastName":"Last Name"
+}
